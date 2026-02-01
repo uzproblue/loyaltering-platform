@@ -1,0 +1,40 @@
+{
+  "signIn": {
+    "title": "Bienvenido de nuevo",
+    "subtitle": "Administra tus programas de fidelización e información de clientes.",
+    "emailLabel": "Correo electrónico laboral",
+    "emailPlaceholder": "nombre@empresa.com",
+    "passwordLabel": "Contraseña",
+    "passwordPlaceholder": "••••••••",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "submitButton": "Iniciar sesión",
+    "noAccount": "¿No tienes una cuenta?",
+    "startTrial": "Comienza una prueba gratuita",
+    "privacyPolicy": "Política de privacidad",
+    "termsOfService": "Términos de servicio"
+  },
+  "register": {
+    "title": "Crea tu cuenta empresarial",
+    "subtitle": "Únete a miles de empresas que crecen con Loyaltering.",
+    "fullNameLabel": "Nombre completo",
+    "fullNamePlaceholder": "ej. Juan Pérez",
+    "emailLabel": "Correo electrónico laboral",
+    "emailPlaceholder": "nombre@empresa.com",
+    "businessNameLabel": "Nombre de la empresa",
+    "businessNamePlaceholder": "Nombre de tu tienda",
+    "passwordLabel": "Contraseña",
+    "passwordPlaceholder": "Mín. 8 caracteres",
+    "tosAgreement": "Acepto los",
+    "termsOfService": "Términos de servicio",
+    "and": "y",
+    "privacyPolicy": "Protección de datos (GDPR)",
+    "submitButton": "Crear cuenta",
+    "hasAccount": "¿Ya tienes una cuenta?",
+    "logIn": "Iniciar sesión"
+  },
+  "branding": {
+    "tagline": "Eleva la lealtad del cliente con información basada en datos.",
+    "description": "Únete a más de 2,000 empresas que usan Loyaltering para construir conexiones significativas con sus clientes.",
+    "registerTagline": "Empoderando empresas modernas con soluciones de fidelización inteligentes."
+  }
+}

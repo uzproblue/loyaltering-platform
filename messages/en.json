@@ -1,0 +1,40 @@
+{
+  "signIn": {
+    "title": "Welcome back",
+    "subtitle": "Manage your loyalty programs and customer insights.",
+    "emailLabel": "Work Email",
+    "emailPlaceholder": "name@company.com",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "••••••••",
+    "forgotPassword": "Forgot Password?",
+    "submitButton": "Log In",
+    "noAccount": "Don't have an account?",
+    "startTrial": "Start a free trial",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "register": {
+    "title": "Create your business account",
+    "subtitle": "Join thousands of businesses growing with Loyaltering.",
+    "fullNameLabel": "Full Name",
+    "fullNamePlaceholder": "e.g. Jane Doe",
+    "emailLabel": "Work Email",
+    "emailPlaceholder": "name@company.com",
+    "businessNameLabel": "Business Name",
+    "businessNamePlaceholder": "Your Store Name",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Min. 8 characters",
+    "tosAgreement": "I agree to the",
+    "termsOfService": "Terms of Service",
+    "and": "and",
+    "privacyPolicy": "Datenschutz (GDPR)",
+    "submitButton": "Create Account",
+    "hasAccount": "Already have an account?",
+    "logIn": "Log in"
+  },
+  "branding": {
+    "tagline": "Elevate customer loyalty with data-driven insights.",
+    "description": "Join over 2,000 businesses using Loyaltering to build meaningful connections with their customers.",
+    "registerTagline": "Empowering modern businesses with smart loyalty solutions."
+  }
+}
