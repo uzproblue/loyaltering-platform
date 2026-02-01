@@ -100,7 +100,7 @@ export default function OnboardingStep4({ onComplete, onExploreLater }: Onboardi
           onClick={onExploreLater}
           className="text-slate-500 dark:text-slate-400 font-medium hover:text-primary dark:hover:text-white transition-colors"
         >
-          I'll explore later
+          I&apos;ll explore later
         </button>
       </div>
     </div>

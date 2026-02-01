@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -24,7 +25,7 @@ export default function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
       <div className="flex flex-col gap-6 p-6">
         {/* Branding */}
         <div className="flex items-center gap-3">
-          <img src="/loyaltering-logo.svg" alt="Loyaltering" className="size-10 shrink-0 dark:invert" width={40} height={40} />
+          <Image src="/loyaltering-logo.svg" alt="Loyaltering" width={40} height={40} className="shrink-0 dark:invert" />
           {!isCollapsed && (
             <div>
               <h1 className="text-base font-bold leading-tight">Loyaltering</h1>

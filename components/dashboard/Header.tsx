@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
@@ -47,10 +48,12 @@ export default function Header({ title = 'Enterprise Master Dashboard', showSetu
             <span className="material-symbols-outlined">notifications</span>
           </button>
           <div className="relative group">
-            <div className="size-10 rounded-full overflow-hidden border-2 border-white dark:border-gray-800 shadow-sm cursor-pointer">
-              <img
+            <div className="size-10 rounded-full overflow-hidden border-2 border-white dark:border-gray-800 shadow-sm cursor-pointer relative">
+              <Image
                 alt="Admin user profile"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXGe1RvcEcVMqt7lwb3YW3pfZx33Y3OmdEQIzOgmgs35p367ba_1Ekk90c0mOD1KBwK47fApbQjpUh3UQRBE1akyfPW2PZWUIE4Cf9w0Ro3IEArSFUv8STynMV7o1vUjZjbbk5i2owZ10WY1daJExl6DSrTyrM0_0Hh3BFC7V5OLb0AALM5-gemUfgzU-AOLiepayGnCTXOKx6nIJ9MAeHVk3HNTVqO81Cv4IAIRU7sMlOqJavU7nipfk_aBM78h4o4TETM9dcTQ"
+                width={40}
+                height={40}
                 className="w-full h-full object-cover"
               />
             </div>

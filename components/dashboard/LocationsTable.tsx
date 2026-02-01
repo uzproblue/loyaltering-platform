@@ -49,7 +49,7 @@ export default function LocationsTable({ locations, onLocationClick, isEmpty = f
           <div className="size-12 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center mb-4">
             <span className="material-symbols-outlined text-[#757575]">storefront</span>
           </div>
-          <p className="text-[#757575] text-sm font-medium mb-4">You haven't added any business locations.</p>
+          <p className="text-[#757575] text-sm font-medium mb-4">You haven&apos;t added any business locations.</p>
           {onAddLocation && (
             <button
               onClick={onAddLocation}

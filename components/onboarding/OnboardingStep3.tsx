@@ -328,7 +328,7 @@ export default function OnboardingStep3({ onSubmit, onBack, selectedPlan }: Onbo
               <span className="material-symbols-outlined">arrow_forward</span>
             </button>
             <p className="mt-4 text-[10px] text-[#757575] text-center leading-relaxed">
-              By clicking "Complete Setup", you agree to Loyaltering's{' '}
+              By clicking &quot;Complete Setup&quot;, you agree to Loyaltering&apos;s{' '}
               <a className="underline hover:opacity-80 transition-opacity" href="#">
                 Terms of Service
               </a>{' '}
