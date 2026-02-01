@@ -14,11 +14,7 @@ export default function SessionErrorHandler() {
     // Don't redirect if we're on public pages (sign-in, register, forgot-password)
     // Also don't redirect while loading to avoid race conditions
     const publicPages = ['/sign-in', '/register', '/forgot-password', '/reset-password'];
-    if (
-      status === 'unauthenticated' &&
-      !publicPages.includes(pathname) &&
-      status !== 'loading'
-    ) {
+    if (status === 'unauthenticated' && !publicPages.includes(pathname)) {
       router.push('/sign-in');
     }
   }, [status, router, pathname]);

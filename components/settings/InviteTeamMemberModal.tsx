@@ -44,8 +44,8 @@ export default function InviteTeamMemberModal({
 
   // When role changes to operator and multiple locations are selected, keep only the first
   useEffect(() => {
-    if (role === 'operator' && selectedLocations.length > 1) {
-      setSelectedLocations([selectedLocations[0]]);
+    if (role === 'operator') {
+      setSelectedLocations((s) => (s.length > 1 ? [s[0]] : s));
     }
   }, [role]);
 
