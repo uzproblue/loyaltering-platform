@@ -1,17 +1,27 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
 import OnboardingStep1 from '@/components/onboarding/OnboardingStep1';
 import OnboardingStep2 from '@/components/onboarding/OnboardingStep2';
-import OnboardingStep3 from '@/components/onboarding/OnboardingStep3';
+import OnboardingStep3, { ONBOARDING_PENDING_KEY } from '@/components/onboarding/OnboardingStep3';
 import OnboardingStep4 from '@/components/onboarding/OnboardingStep4';
 
 export default function OnboardingContent() {
   const router = useRouter();
   const { data: session } = useSession();
   const [currentStep, setCurrentStep] = useState(1);
+
+  const searchParams = useSearchParams();
+
+  // When returning from Stripe cancel, show step 3 again
+  useEffect(() => {
+    if (searchParams.get('payment') === 'cancel') {
+      setCurrentStep(3);
+      router.replace('/onboarding', { scroll: false });
+    }
+  }, [searchParams, router]);
 
   // Check if onboarding was skipped in this session
   useEffect(() => {
@@ -23,6 +33,51 @@ export default function OnboardingContent() {
       }
     }
   }, [router]);
+
+  // Handle return from Stripe Checkout (payment=success): complete onboarding and redirect
+  useEffect(() => {
+    const payment = searchParams.get('payment');
+    if (payment !== 'success' || typeof window === 'undefined') return;
+
+    const raw = sessionStorage.getItem(ONBOARDING_PENDING_KEY);
+    sessionStorage.removeItem(ONBOARDING_PENDING_KEY);
+    if (!raw) {
+      router.replace('/onboarding');
+      return;
+    }
+    let data: { businessName: string; category: string; locations: string; country: string; plan: string; billingCycle: 'Monthly' | 'Yearly' };
+    try {
+      data = JSON.parse(raw);
+    } catch {
+      router.replace('/onboarding');
+      return;
+    }
+
+    (async () => {
+      try {
+        const response = await fetch('/api/user/onboarding', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            onboardingCompleted: true,
+            businessName: data.businessName,
+            category: data.category,
+            locations: data.locations,
+            country: data.country,
+            plan: data.plan,
+            billingCycle: data.billingCycle,
+          }),
+        });
+        if (response.ok) {
+          window.location.href = '/';
+        } else {
+          router.replace('/onboarding');
+        }
+      } catch {
+        router.replace('/onboarding');
+      }
+    })();
+  }, [searchParams, router]);
   const [onboardingData, setOnboardingData] = useState({
     businessName: '',
     category: '',
@@ -159,6 +214,14 @@ export default function OnboardingContent() {
                   }
                 : undefined
             }
+            onboardingDataForSuccess={{
+              businessName: onboardingData.businessName,
+              category: onboardingData.category,
+              locations: onboardingData.locations,
+              country: onboardingData.country,
+              plan: onboardingData.plan,
+              billingCycle: onboardingData.billingCycle,
+            }}
           />
         )}
         {currentStep === 4 && (
