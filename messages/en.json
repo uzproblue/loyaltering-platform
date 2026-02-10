@@ -2,7 +2,7 @@
   "signIn": {
     "title": "Welcome back",
     "subtitle": "Manage your loyalty programs and customer insights.",
-    "emailLabel": "Work Email",
+    "emailLabel": "Email",
     "emailPlaceholder": "name@company.com",
     "passwordLabel": "Password",
     "passwordPlaceholder": "••••••••",
