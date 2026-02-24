@@ -1,6 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import { routing } from '@/i18n/routing';
+import { Analytics } from '@vercel/analytics/next';
 import StoreProvider from '@/components/StoreProvider';
 import SessionProvider from '@/components/SessionProvider';
 import SessionErrorHandler from '@/components/SessionErrorHandler';
@@ -21,6 +21,8 @@ export default async function RootLayout({
   return (
     <html suppressHydrationWarning lang={locale}>
       <head>
+        <link rel="icon" type="image/svg+xml" href="/loyaltering-logo.svg" />
+        <link rel="apple-touch-icon" href="/loyaltering-logo.svg" />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
           rel="stylesheet"
@@ -41,6 +43,7 @@ export default async function RootLayout({
             </LocaleProvider>
           </NextIntlClientProvider>
         </SessionProvider>
+        <Analytics />
       </body>
     </html>
   );
