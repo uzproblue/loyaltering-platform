@@ -21,6 +21,8 @@ export default async function RootLayout({
   return (
     <html suppressHydrationWarning lang={locale}>
       <head>
+        <link rel="icon" type="image/svg+xml" href="/loyaltering-logo.svg" />
+        <link rel="apple-touch-icon" href="/loyaltering-logo.svg" />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
           rel="stylesheet"
