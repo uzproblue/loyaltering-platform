@@ -1,6 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import { routing } from '@/i18n/routing';
+import { Analytics } from '@vercel/analytics/next';
 import StoreProvider from '@/components/StoreProvider';
 import SessionProvider from '@/components/SessionProvider';
 import SessionErrorHandler from '@/components/SessionErrorHandler';
@@ -43,6 +43,7 @@ export default async function RootLayout({
             </LocaleProvider>
           </NextIntlClientProvider>
         </SessionProvider>
+        <Analytics />
       </body>
     </html>
   );
