@@ -30,7 +30,7 @@ export default function RegisterContent() {
     setError('');
 
     if (!agreeToTerms) {
-      setError('Please accept the Terms of Service to continue.');
+      setError('Please accept the Terms of Service and Privacy Policy to continue.');
       return;
     }
 
@@ -82,7 +82,7 @@ export default function RegisterContent() {
           // Wait a moment for session to be set
           await new Promise((resolve) => setTimeout(resolve, 500));
           // Redirect to onboarding (new users haven't completed onboarding)
-          window.location.href = '/onboarding';
+          window.location.href = '/';
           return;
         }
       } catch (loginError: any) {
@@ -235,12 +235,12 @@ export default function RegisterContent() {
               />
               <label className="text-sm leading-normal text-[#141414] dark:text-gray-300" htmlFor="tos">
                 I agree to the{' '}
-                <Link className="font-bold underline" href="#">
+                <Link className="font-bold underline" href="https://www.loyaltering.online/terms-of-service" target="_blank" rel="noopener noreferrer">
                   Terms of Service
                 </Link>{' '}
                 and{' '}
-                <Link className="font-bold underline" href="#">
-                  Datenschutz (GDPR)
+                <Link className="font-bold underline" href="https://www.loyaltering.online/privacy-policy" target="_blank" rel="noopener noreferrer">
+                  Privacy Policy
                 </Link>
                 .
               </label>

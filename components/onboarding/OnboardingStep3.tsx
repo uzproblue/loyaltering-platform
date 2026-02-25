@@ -7,8 +7,6 @@ export const ONBOARDING_PENDING_KEY = 'onboarding_pending';
 export interface OnboardingPendingData {
   businessName: string;
   category: string;
-  locations: string;
-  country: string;
   plan: string;
   billingCycle: 'Monthly' | 'Yearly';
 }
