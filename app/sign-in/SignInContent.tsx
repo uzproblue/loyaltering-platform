@@ -230,10 +230,10 @@ export default function SignInContent() {
 
           {/* Footer Meta */}
           <div className="flex justify-center gap-6 mt-4">
-            <Link className="text-xs text-[#757575] hover:text-[#141414] transition-colors" href="#">
+            <Link className="text-xs text-[#757575] hover:text-[#141414] transition-colors" href="https://www.loyaltering.online/privacy-policy" target="_blank" rel="noopener noreferrer">
               Privacy Policy
             </Link>
-            <Link className="text-xs text-[#757575] hover:text-[#141414] transition-colors" href="#">
+            <Link className="text-xs text-[#757575] hover:text-[#141414] transition-colors" href="https://www.loyaltering.online/terms-of-service" target="_blank" rel="noopener noreferrer">
               Terms of Service
             </Link>
           </div>
