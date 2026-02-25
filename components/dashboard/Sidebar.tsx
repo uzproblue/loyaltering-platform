@@ -3,6 +3,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useAppSelector } from '@/store/hooks';
+
+function getSubscriptionLabel(plan?: string, subscriptionStatus?: string): string {
+  if (subscriptionStatus === 'trial') return 'Trial';
+  const p = (plan || '').toLowerCase();
+  if (p === 'basic') return 'Basic';
+  if (p === 'professional') return 'Pro';
+  if (p === 'enterprise') return 'Premium';
+  if (p === 'premium') return 'Premium';
+  return plan ? plan.charAt(0).toUpperCase() + plan.slice(1) : 'Basic';
+}
 
 interface SidebarProps {
   isCollapsed: boolean;
@@ -11,7 +22,9 @@ interface SidebarProps {
 
 export default function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
   const pathname = usePathname();
-  
+  const profile = useAppSelector((state) => state.user.profile);
+  const subscriptionLabel = getSubscriptionLabel(profile?.plan, profile?.subscriptionStatus);
+
   const isActive = (path: string) => {
     return pathname === path;
   };
@@ -29,7 +42,7 @@ export default function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
           {!isCollapsed && (
             <div>
               <h1 className="text-base font-bold leading-tight">Loyaltering</h1>
-              <p className="text-[#757575] text-xs font-normal">Enterprise Team</p>
+              <p className="text-[#757575] text-xs font-normal capitalize">{subscriptionLabel}</p>
             </div>
           )}
         </div>

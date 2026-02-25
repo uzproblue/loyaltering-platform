@@ -10,6 +10,8 @@ export interface UserProfile {
   role: 'admin' | 'user';
   restaurantId?: string;
   onboardingCompleted: boolean;
+  plan?: string;
+  subscriptionStatus?: string;
   createdAt: string;
   updatedAt: string;
 }
