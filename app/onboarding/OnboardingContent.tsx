@@ -45,7 +45,7 @@ export default function OnboardingContent() {
       router.replace('/onboarding');
       return;
     }
-    let data: { businessName: string; category: string; locations: string; country: string; plan: string; billingCycle: 'Monthly' | 'Yearly' };
+    let data: { businessName: string; category: string; plan: string; billingCycle: 'Monthly' | 'Yearly' };
     try {
       data = JSON.parse(raw);
     } catch {
@@ -62,8 +62,6 @@ export default function OnboardingContent() {
             onboardingCompleted: true,
             businessName: data.businessName,
             category: data.category,
-            locations: data.locations,
-            country: data.country,
             plan: data.plan,
             billingCycle: data.billingCycle,
           }),
@@ -81,8 +79,6 @@ export default function OnboardingContent() {
   const [onboardingData, setOnboardingData] = useState({
     businessName: '',
     category: '',
-    locations: '',
-    country: '',
     plan: '',
     billingCycle: 'Monthly' as 'Monthly' | 'Yearly',
   });
@@ -96,12 +92,7 @@ export default function OnboardingContent() {
     router.push('/sign-in');
   };
 
-  const handleStep1Submit = async (data: {
-    businessName: string;
-    category: string;
-    locations: string;
-    country: string;
-  }) => {
+  const handleStep1Submit = async (data: { businessName: string; category: string }) => {
     setOnboardingData((prev) => ({ ...prev, ...data }));
     // Move to step 2 instead of completing
     setCurrentStep(2);
@@ -136,8 +127,6 @@ export default function OnboardingContent() {
           onboardingCompleted: true,
           businessName: onboardingData.businessName,
           category: onboardingData.category,
-          locations: onboardingData.locations,
-          country: onboardingData.country,
           plan: onboardingData.plan,
           billingCycle: onboardingData.billingCycle,
         }),
@@ -217,8 +206,6 @@ export default function OnboardingContent() {
             onboardingDataForSuccess={{
               businessName: onboardingData.businessName,
               category: onboardingData.category,
-              locations: onboardingData.locations,
-              country: onboardingData.country,
               plan: onboardingData.plan,
               billingCycle: onboardingData.billingCycle,
             }}

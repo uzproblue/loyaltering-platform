@@ -17,8 +17,6 @@ export async function PUT(request: NextRequest) {
       onboardingCompleted,
       businessName,
       category,
-      locations,
-      country,
       plan,
       billingCycle
     } = body;
@@ -35,8 +33,6 @@ export async function PUT(request: NextRequest) {
         onboardingCompleted,
         businessName,
         category,
-        locations,
-        country,
         plan,
         billingCycle,
       }),

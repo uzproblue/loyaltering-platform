@@ -3,12 +3,7 @@
 import { useState } from 'react';
 
 interface OnboardingStep1Props {
-  onSubmit: (data: {
-    businessName: string;
-    category: string;
-    locations: string;
-    country: string;
-  }) => void;
+  onSubmit: (data: { businessName: string; category: string }) => void;
   onSkip: () => void;
 }
 
@@ -16,8 +11,6 @@ export default function OnboardingStep1({ onSubmit, onSkip }: OnboardingStep1Pro
   const [formData, setFormData] = useState({
     businessName: '',
     category: '',
-    locations: '',
-    country: 'us',
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -44,9 +37,6 @@ export default function OnboardingStep1({ onSubmit, onSkip }: OnboardingStep1Pro
     }
     if (!formData.category) {
       newErrors.category = 'Please select a category';
-    }
-    if (!formData.locations) {
-      newErrors.locations = 'Please select number of locations';
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -128,51 +118,9 @@ export default function OnboardingStep1({ onSubmit, onSkip }: OnboardingStep1Pro
               </option>
               <option value="cafe">Cafe & Bakery</option>
               <option value="restaurant">Restaurant & Dining</option>
-              <option value="retail">Retail Shop</option>
-              <option value="beauty">Beauty & Wellness</option>
-              <option value="other">Other Services</option>
+              <option value="other">Other</option>
             </select>
             {errors.category && <p className="text-[11px] text-red-500">{errors.category}</p>}
-          </div>
-
-          {/* Number of Locations & Country Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="flex flex-col gap-2">
-              <label className="text-[#141414] dark:text-white text-sm font-medium">Locations</label>
-              <select
-                name="locations"
-                value={formData.locations}
-                onChange={handleChange}
-                className={`form-select-icon w-full rounded-lg border ${
-                  errors.locations
-                    ? 'border-red-500 dark:border-red-500'
-                    : 'border-[#e0e0e0] dark:border-[#444]'
-                } bg-white dark:bg-[#2b2b2b] text-[#141414] dark:text-white px-4 py-3 text-base outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all`}
-              >
-                <option value="">Select locations</option>
-                <option value="1">1 Location</option>
-                <option value="2-5">2-5 Locations</option>
-                <option value="6-10">6-10 Locations</option>
-                <option value="11+">11+ Locations</option>
-              </select>
-              {errors.locations && <p className="text-[11px] text-red-500">{errors.locations}</p>}
-            </div>
-            <div className="flex flex-col gap-2">
-              <label className="text-[#141414] dark:text-white text-sm font-medium">Country/Region</label>
-              <select
-                name="country"
-                value={formData.country}
-                onChange={handleChange}
-                className="form-select-icon w-full rounded-lg border border-[#e0e0e0] dark:border-[#444] bg-white dark:bg-[#2b2b2b] text-[#141414] dark:text-white px-4 py-3 text-base outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-              >
-                <option value="us">United States</option>
-                <option value="uk">United Kingdom</option>
-                <option value="ca">Canada</option>
-                <option value="au">Australia</option>
-                <option value="fr">France</option>
-                <option value="de">Germany</option>
-              </select>
-            </div>
           </div>
 
           {/* Submit Button */}
@@ -193,18 +141,6 @@ export default function OnboardingStep1({ onSubmit, onSkip }: OnboardingStep1Pro
             </button>
           </div>
         </form>
-      </div>
-
-      {/* Footer Meta */}
-      <div className="flex items-center justify-center gap-6 text-[#757575] text-xs">
-        <div className="flex items-center gap-1">
-          <span className="material-symbols-outlined text-sm">verified_user</span>
-          <span>Secure encrypted data</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <span className="material-symbols-outlined text-sm">support_agent</span>
-          <span>24/7 Priority Support</span>
-        </div>
       </div>
     </div>
   );
