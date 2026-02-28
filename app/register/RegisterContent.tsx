@@ -13,6 +13,7 @@ export default function RegisterContent() {
     businessName: '',
     password: '',
   });
+  const [rememberMe, setRememberMe] = useState(false);
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
@@ -66,6 +67,7 @@ export default function RegisterContent() {
         const signInResult = await signIn('credentials', {
           email: formData.email,
           password: formData.password,
+          remember: rememberMe ? 'true' : 'false',
           redirect: false,
         });
 
@@ -223,6 +225,17 @@ export default function RegisterContent() {
                 </button>
               </div>
             </div>
+
+            {/* Remember this device */}
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+                className="rounded border-[#e0e0e0] dark:border-gray-600 text-primary focus:ring-primary"
+              />
+              <span className="text-[#141414] dark:text-gray-300 text-sm font-normal">Remember this device</span>
+            </label>
 
             {/* TOS Checkbox */}
             <div className="flex items-start gap-3 py-2">

@@ -4,7 +4,7 @@ import { registerUser } from '@/lib/api';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { fullName, email, businessName, password } = body;
+    const { fullName, email, businessName, password, rememberMe } = body;
 
     // Validation
     if (!fullName || !email || !password) {
@@ -27,6 +27,7 @@ export async function POST(request: Request) {
       email,
       businessName,
       password,
+      ...(rememberMe !== undefined && { rememberMe: Boolean(rememberMe) }),
     });
 
     if (!result.success) {

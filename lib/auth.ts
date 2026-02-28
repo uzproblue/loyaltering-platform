@@ -9,27 +9,36 @@ export const authOptions: NextAuthOptions = {
       credentials: {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
+        remember: { label: 'Remember this device', type: 'text' },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
           throw new Error('Please enter your email and password');
         }
 
+        const rememberMe = credentials.remember === 'true';
+
         // Call server API to authenticate
         const result = await loginUser({
           email: credentials.email,
           password: credentials.password,
+          rememberMe,
         });
 
         if (!result.success || !result.user) {
           throw new Error(result.message || 'Invalid email or password');
         }
 
-        // Return user object (will be encoded in JWT)
+        if (!result.token) {
+          throw new Error('Server did not return a token');
+        }
+
+        // Return user object with server JWT (stored in NextAuth JWT/session)
         return {
           id: result.user.id,
           email: result.user.email,
           name: result.user.name,
+          accessToken: result.token,
         };
       },
     }),
@@ -54,6 +63,7 @@ export const authOptions: NextAuthOptions = {
         token.id = user.id;
         token.email = user.email;
         token.name = user.name;
+        token.accessToken = user.accessToken;
       }
       return token;
     },
@@ -63,6 +73,7 @@ export const authOptions: NextAuthOptions = {
         session.user.email = token.email as string;
         session.user.name = token.name as string;
       }
+      session.accessToken = token.accessToken as string | undefined;
       return session;
     },
   },
