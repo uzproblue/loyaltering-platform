@@ -5,11 +5,13 @@ export interface RegisterUserData {
   email: string;
   businessName?: string;
   password: string;
+  rememberMe?: boolean;
 }
 
 export interface LoginUserData {
   email: string;
   password: string;
+  rememberMe?: boolean;
 }
 
 export interface ApiResponse<T> {
@@ -79,7 +81,11 @@ export async function loginUser(
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        email: data.email,
+        password: data.password,
+        ...(data.rememberMe !== undefined && { rememberMe: data.rememberMe }),
+      }),
     });
 
     const result = await response.json();

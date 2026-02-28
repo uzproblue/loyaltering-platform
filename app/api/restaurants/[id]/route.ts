@@ -11,7 +11,7 @@ export async function PUT(
   try {
     const session = await getServerSession(authOptions);
 
-    if (!session?.user?.email) {
+    if (!session?.accessToken) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
@@ -23,7 +23,7 @@ export async function PUT(
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'X-User-Email': session.user.email,
+        Authorization: `Bearer ${session.accessToken}`,
       },
       credentials: 'include',
       body: JSON.stringify(body),
